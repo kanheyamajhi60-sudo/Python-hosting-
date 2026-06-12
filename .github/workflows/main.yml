@@ -1,0 +1,27 @@
+name: Auto Refresh Every Minute
+
+on:
+  schedule:
+    # Cron: har minute (minute, hour, day, month, weekday)
+    - cron: '* * * * *'
+  workflow_dispatch:  # Manual trigger bhi allow hai
+
+jobs:
+  refresh-task:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Run your ML/model script
+        run: |
+          echo "Running at $(date)"
+          # Apni ML script ka command yahan likho
+          # Example: python3 train.py  or  python3 inference.py
+          
+          # Agar sirf refresh (keep-alive) karna hai to:
+          # curl https://your-app.com/health  (agar API hai)
+          
+      - name: Optional - Send log to somewhere
+        run: |
+          echo "Refresh completed at $(date)" >> refresh.log
