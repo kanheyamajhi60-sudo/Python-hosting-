@@ -818,36 +818,15 @@ async def button_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
     action, p_name = data[0], "_".join(data[1:])
     user_id = update.effective_user.id
 
-#   if query.data == "check_join":
-#        is_member = await check_channel_membership(user_id, context)
-#       if is_member:
-#           await query.edit_message_text("✅ **Verification successful! You can now use the bot, click on /start command & enjoy.**", parse_mode='Markdown')
-#            await start(update, context)
- #       else:
-#            await query.answer("❌ You haven't joined the channel yet!", show_alert=True)
- #       return
- 
-if query.data == "check_join":
-    is_member = await check_channel_membership(user_id, context)
+   if query.data == "check_join":
+         is_member = await check_channel_membership(user_id, context
     if is_member:
-        # Start menu ka text (wahi jo /start mein hai)
-        menu_text = (
-            "🌍 **ʟᴀᴍ ᴘʀᴇᴍɪᴜᴍ ʜᴏꜱᴛɪɴɗ ᴠ1** 🌸\n"
-            "━━━━━━━━━━━━━━━━━━━━━\n"
-            "💙 **ᴡᴇʟᴄᴏᴍᴇ ᴛᴏ ᴛʜᴇ ᴇʟɪᴛᴇ ᴘᴀɴᴇʟ**\n"
-            "🔮 **Welcome! This is the most powerful premium server in India.**\n\n"
-            f"🇮🇳 **ᴏᴡɴᴇʀ:** `{ADMIN_USERNAME}`\n"
-            f"📢 **ᴄʜᴀɴɴᴇʟ:** {'Not Set' if not REQUIRED_CHANNEL else REQUIRED_CHANNEL}\n"
-            "━━━━━━━━━━━━━━━━━━━━━"
-        )
-        await query.edit_message_text(
-            menu_text,
-            reply_markup=get_main_keyboard(user_id),
-            parse_mode='Markdown'
-        )
-    else:
-        await query.answer("❌ You haven't joined the channel yet!", show_alert=True)
-    return
+            await query.edit_message_text("✅ **Verification successful! You can now use the bot, click on /start command & enjoy.**", parse_mode='Markdown')
+            await start(update, context)
+        else:
+           await query.answer("❌ You haven't joined the channel yet!", show_alert=True)
+        return
+ 
 
     if action == "run":
         if p_name in running_processes and running_processes[p_name].poll() is None:
